@@ -8,6 +8,7 @@
     ]).
 
 -define(DEFAULT_KEYTYPE, serial).
+-compile([tuple_calls]).
 
 keytype(Module) when is_atom(Module) ->
     proplists:get_value(id, boss_record_lib:attribute_types(Module), ?DEFAULT_KEYTYPE);

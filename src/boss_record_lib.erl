@@ -13,8 +13,9 @@
         ensure_loaded/1
     ]).
 -ifdef(TEST).
--compile(export_all).
+-compile([export_all, tuple_calls]).
 -endif.
+-compile([tuple_calls]).
 -define(THOUSAND, 1000).
 -define(MILLION, ?THOUSAND*?THOUSAND).
 
