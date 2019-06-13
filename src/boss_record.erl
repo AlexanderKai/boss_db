@@ -5,6 +5,8 @@
 -include_lib("proper/include/proper.hrl").
 -endif.
 
+-compile([tuple_calls]).
+
 new(Model, Attributes) ->
     DummyRecord = boss_record_lib:dummy_record(Model),
     DummyRecord:set(Attributes).

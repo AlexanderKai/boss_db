@@ -60,7 +60,7 @@
         sort_order/1]).
 
 -ifdef(TEST).
--compile(export_all).
+-compile([export_all, tuple_calls]).
 -endif.
 
 -ifndef(OTP_RELEASE).                           % pre-OTP21
@@ -68,6 +68,8 @@
 -else.
 -define(WITH_STACKTRACE(T, R, S), T:R:S ->).
 -endif.
+
+-compile([tuple_calls]).
 
 
 -type sort_order()      :: ascending|descending.

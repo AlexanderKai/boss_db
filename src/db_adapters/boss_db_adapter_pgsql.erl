@@ -9,7 +9,7 @@
 -type date_time() :: calendar:datetime1970().
 -type sql_param_value() :: string()|number()|binary()|boolean().
 -export_type([sql_param_value/0]).
--compile(export_all).
+-compile([export_all, tuple_calls]).
 start(_) ->
     ok.
 
