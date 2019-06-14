@@ -5,6 +5,9 @@
 -ifdef(TEST).
 -compile(export_all).
 -endif.
+
+-compile([tuple_calls]).
+
 -record(state, {
         watch_dict              = dict:new()       ::dict:dict(),
         ttl_tree                = gb_trees:empty() ::gb_trees:tree(),
