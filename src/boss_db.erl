@@ -401,6 +401,7 @@ transaction(TransactionFun, Timeout) ->
                 {atomic, Res}
             catch
                 ?WITH_STACKTRACE(Type, Reason, Stack)
+                    poolboy:checkin(?POOLNAME, Worker),
                     throw({error, {Type, Reason, Stack}})
             end
     end,
