@@ -393,11 +393,10 @@ transaction(TransactionFun, Timeout) ->
                 boss_db_controller:handle_call({transaction, TransactionFun},
                                                undefined, State),
             put(boss_db_transaction_info, undefined),
-            poolboy:checkin(?POOLNAME, Worker),
             Reply;
         _ ->
             try
-                Res = TransactionFun(),
+                Res = TransactionFun(),               
                 {atomic, Res}
             catch
                 ?WITH_STACKTRACE(Type, Reason, Stack)
@@ -405,6 +404,7 @@ transaction(TransactionFun, Timeout) ->
                     throw({error, {Type, Reason, Stack}})
             end
     end,
+    poolboy:checkin(?POOLNAME, Worker),
     FinReply.
 
 
